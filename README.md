@@ -1,1 +1,3 @@
-# toDoShopList
+# To-Do shopping list with sharing
+
+Aplikace by měla uživatelům umožnit spravovat položky v nákupním seznamu. Každý nákupní seznam má vždy svého vlastníka, tj. uživatele, který v aplikaci založí nákupní seznam. Následně může do nákupního seznamu pozvat i ostatní uživatele, kteří mohou seznam používat. V seznamu tak mohou uživatelé přidávat/odebírat položky nebo označit položku nákupního seznamu jako vyřešenou. Vlastník nákupního seznamu může navíc vytvořený nákupní seznam smazat. Uživatel má přístup pouze do těch nákupních seznamů, u kterých je buď vlastníkem nebo pozvaným členem. V přehledu nákupních seznamů rovněž může vidět pouze ty, do kterých má přístup.
