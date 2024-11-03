@@ -1,0 +1,15 @@
+.navbar {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.navbar > img {
+    height: 50px;
+}
+
+.navbar > h1 {
+    font-size: xx-large;
+}
