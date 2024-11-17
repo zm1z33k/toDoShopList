@@ -4,7 +4,7 @@
   text-align: "center";
 }
 
-.addListButton {
+#addListButton {
   background: "none";
   border: "3px solid #ccc";
   cursor: "pointer";
@@ -13,7 +13,7 @@
   margin-bottom: "20px";
 }
 
-.tile {
+#tile {
   border: "2px solid #ccc";
   border-radius: "10px";
   margin: "10px";
@@ -25,7 +25,7 @@
   cursor: "pointer";
 }
 
-#optionButton {
+#shareButton {
   background: "none";
   border: "3px solid #ccc";
   cursor: "pointer";
