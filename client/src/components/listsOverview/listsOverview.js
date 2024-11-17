@@ -92,7 +92,7 @@ function ListsOverview() {
                     border: "3px solid #ccc",
                     cursor: "pointer",
                     color: "green",
-                    padding: "10px",
+                    padding: "3px",
                     fontSize: "16px",
                     marginBottom: "20px",
                 }}
