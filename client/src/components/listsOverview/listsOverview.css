@@ -1,0 +1,45 @@
+#listName {
+  padding: "10px";
+  font-family: "Arial, sans-serif";
+  text-align: "center";
+}
+
+.addListButton {
+  background: "none";
+  border: "3px solid #ccc";
+  cursor: "pointer";
+  padding: "10px";
+  font-size: "16px";
+  margin-bottom: "20px";
+}
+
+.tile {
+  border: "2px solid #ccc";
+  border-radius: "10px";
+  margin: "10px";
+  padding: "20px";
+  width: "200px";
+  text-align: "center";
+  background: "darkgrey";
+  box-shadow: "0 4px 8px rgba(0, 0, 0, 0.1)";
+  cursor: "pointer";
+}
+
+#optionButton {
+  background: "none";
+  border: "3px solid #ccc";
+  cursor: "pointer";
+  color: "blue";
+  margin-right: "10px";
+  padding: "3px";
+  font-size: "16px";
+}
+
+#deleteButton {
+  background: "none";
+  border: "3px solid #ccc";
+  cursor: "pointer";
+  color: "red";
+  padding: "3px";
+  font-size: "16px";
+}
