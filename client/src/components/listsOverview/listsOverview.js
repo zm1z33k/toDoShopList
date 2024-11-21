@@ -75,7 +75,7 @@ function ListsOverview() {
 
     // Zobrazení seznamů
     return (
-        <div style={{ padding: "10px", fontFamily: "Arial, sans-serif", textAlign: "center" }}>
+        <div className="listName">
             <h1>Stacy's Todo</h1>
             <div style={{ marginBottom: "20px" }}>
             <label htmlFor="filter">Filter lists: </label>
@@ -85,66 +85,29 @@ function ListsOverview() {
                 <option value="notArchived">Not Archived</option>
             </select>
             </div>
-            <button
+            <button className="button"
                 onClick={() => addNewList()}
-                style={{
-                    background: "none",
-                    border: "3px solid #ccc",
-                    cursor: "pointer",
-                    color: "green",
-                    padding: "3px",
-                    fontSize: "16px",
-                    marginBottom: "20px",
-                }}
+                
             >
                 ➕
             </button>
-            <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
+            <div className="tile">
                 {filteredLists.map((list) => (
-                    <div
-                        key={list.id}
-                        style={{
-                            border: "2px solid #ccc",
-                            borderRadius: "10px",
-                            margin: "10px",
-                            padding: "20px",
-                            width: "200px",
-                            textAlign: "center",
-                            background: "darkgrey",
-                            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-                            cursor: "pointer"
-                        }}
-                    >
+                    <div className="tileStyle"
+                        key={list.id}>
                         <h3>{list.name}</h3>
                         <div>
                             {list.sharedtome ? "🤝" : "👑"} {/*pokud to mi to nikdo nesdili, tak jsem vlastnikem*/}
                             {list.archived ? "📦" : " "}
                         </div>
                         <div style={{ marginTop: "20px" }}>
-                            <button
+                            <button className="optionButton"
                                 onClick={() => shareList(list.id)}
-                                style={{
-                                    background: "none",
-                                    border: "3px solid #ccc",
-                                    cursor: "pointer",
-                                    color: "blue",
-                                    marginRight: "10px",
-                                    padding: "3px",
-                                    fontSize: "16px",
-                                }}
                             >
                                 🔗
                             </button>
-                            <button
+                            <button className="optionButton"
                                 onClick={() => deleteList(list.id)}
-                                style={{
-                                    background: "none",
-                                    border: "3px solid #ccc",
-                                    cursor: "pointer",
-                                    color: "red",
-                                    padding: "3px",
-                                    fontSize: "16px",
-                                }}
                             >
                                 ❌
                             </button>
