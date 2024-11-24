@@ -30,6 +30,18 @@ function ListsOverview() {
         }
     };
 
+    // Funkce pro archivování seznamu
+    const archiveList = (id) => {
+        const list = lists.find((list) => list.id === id);
+        if (list.owner !== currentUser) {
+            alert("You are not the owner of this list and cannot archive it.");
+            return;
+        }
+        if (window.confirm("Are you sure you want to archive this list?")) {
+            setLists(lists.filter((list) => list.id !== id));
+        }
+    };
+
     // Funkce pro sdílení seznamu
     const shareList = (id) => {
         const list = lists.find((list) => list.id === id);
