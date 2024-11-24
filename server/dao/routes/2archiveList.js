@@ -4,7 +4,7 @@ const { getUserList, archiveList } = require('../services/listService');
 const router = express.Router();
 
 // Archive a list
-router.post('/archiveList', function (req, res) {
+router.put('/archiveList', function (req, res) {
     const userid = req.body.userid;
     const listid = req.body.listid;
 

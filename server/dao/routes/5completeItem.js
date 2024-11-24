@@ -5,7 +5,7 @@ const List = require('../models/List');
 const router = express.Router();
 
 // Complete item
-router.post('/completeItem', verifyUser, async (req, res) => {
+router.put('/completeItem', verifyUser, async (req, res) => {
     const { listid, items } = req.body;
 
     try {

@@ -4,7 +4,7 @@ const List = require('../models/List'); // Assuming you have a List model
 const router = express.Router();
 
 // Share a list with another user
-router.post('/shareList', async (req, res) => {
+router.put('/shareList', async (req, res) => {
     const { owner, listid, shareWith } = req.body;
 
     try {
