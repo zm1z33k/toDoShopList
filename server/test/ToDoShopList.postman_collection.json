@@ -203,7 +203,7 @@
 			"response": []
 		},
 		{
-			"name": "viewList",
+			"name": "viewListDetail",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -220,14 +220,45 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8000/viewList",
+					"raw": "http://localhost:8000/viewListDetail",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8000",
 					"path": [
-						"viewList"
+						"viewListDetail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "viewAllLists",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userid\": \"user1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/viewAllLists",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"viewAllLists"
 					]
 				}
 			},

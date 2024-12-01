@@ -9,12 +9,12 @@ const mockUsers = [
 
 const mockLists = {
     "4": [
-        { item: 'Milk', quantity: 2 },
-        { item: 'Bread', quantity: 1 }
+        { item: 'Milk', quantity: 2, completed: true },
+        { item: 'Bread', quantity: 1, completed: false }
     ],
     "5": [
-        { item: 'Eggs', quantity: 12 },
-        { item: 'Butter', quantity: 1 }
+        { item: 'Eggs', quantity: 12, completed: false },
+        { item: 'Butter', quantity: 1, completed: true }
     ]
 };
 

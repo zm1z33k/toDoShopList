@@ -21,7 +21,8 @@ const addItemRouter = require(path.join(__dirname, 'routes/addItem'))
 const completeItemRouter = require(path.join(__dirname, 'routes/completeItem'))
 const deleteItemRouter = require(path.join(__dirname, 'routes/deleteItem'))
 const deleteListRouter = require(path.join(__dirname, 'routes/deleteList'))
-const viewListRouter = require(path.join(__dirname, 'routes/viewList'))
+const viewListDetailRouter = require(path.join(__dirname, 'routes/viewListDetail'))
+const viewAllListsRouter = require(path.join(__dirname, 'routes/viewAllLists'))
 
 // 1. Create list
 app.use("/createList",createListRouter)
@@ -44,8 +45,11 @@ app.use("/deleteItem",deleteItemRouter)
 // 7. Delete list
 app.use("/deleteList",deleteListRouter)
 
-// 8. View list
-app.use("/viewList",viewListRouter)
+// 8. View list detail
+app.use("/viewListDetail",viewListDetailRouter)
+
+// 9. View all lists
+app.use("/viewAllLists",viewAllListsRouter)
 
 //App listening on port 8000
 app.listen(port, () => {
