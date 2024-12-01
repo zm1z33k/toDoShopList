@@ -1,8 +1,28 @@
 const express = require('express');
-const { verifyUser, verifyOwnership } = require('../middleware/auth');
-const List = require('../models/List');
-
 const router = express.Router();
+
+// Mock data for demonstration purposes
+const mockLists = [
+    {
+        id: '1',
+        owner: 'user1',
+        items: [
+            { itemid: 'a', completed: false },
+            { itemid: 'b', completed: false }
+        ]
+    }
+];
+
+// Mock function to verify user
+const verifyUser = (req, res, next) => {
+    req.user = { id: 'user1' }; // Mock user
+    next();
+};
+
+// Mock function to verify ownership
+const verifyOwnership = (user, list) => {
+    return user.id === list.owner;
+};
 
 // Complete item
 router.put('/completeItem', verifyUser, async (req, res) => {
@@ -10,7 +30,7 @@ router.put('/completeItem', verifyUser, async (req, res) => {
 
     try {
         // Find the list
-        const list = await List.findById(listid);
+        const list = mockLists.find(list => list.id === listid);
 
         // Check if the list exists
         if (!list) {
@@ -24,14 +44,11 @@ router.put('/completeItem', verifyUser, async (req, res) => {
 
         // Update the items
         items.forEach(item => {
-            const listItem = list.items.id(item.itemid);
+            const listItem = list.items.find(i => i.itemid === item.itemid);
             if (listItem) {
                 listItem.completed = item.completed;
             }
         });
-
-        // Save the list
-        await list.save();
 
         // Respond with the updated list
         res.json({

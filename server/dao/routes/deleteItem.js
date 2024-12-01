@@ -1,8 +1,36 @@
 const express = require('express');
-const { verifyUser, isOwnerOrMember } = require('../middleware/auth');
-const List = require('../models/List');
-
 const router = express.Router();
+
+// Mock data for lists and users
+const lists = [
+    {
+        id: '1',
+        owner: 'user1',
+        members: ['user2'],
+        items: [{ id: 'item1', name: 'Milk' }, { id: 'item2', name: 'Bread' }]
+    }
+];
+
+const users = [
+    { id: 'user1', name: 'Alice' },
+    { id: 'user2', name: 'Bob' }
+];
+
+// Mock function to verify user
+const verifyUser = (req, res, next) => {
+    const userId = req.headers['user-id'];
+    const user = users.find(u => u.id === userId);
+    if (!user) {
+        return res.status(401).json({ error: 'Unauthorized' });
+    }
+    req.user = user;
+    next();
+};
+
+// Mock function to check if user is owner or member
+const isOwnerOrMember = (user, list) => {
+    return list.owner === user.id || list.members.includes(user.id);
+};
 
 // Delete item
 router.delete('/deleteItem', verifyUser, async (req, res) => {
@@ -10,7 +38,7 @@ router.delete('/deleteItem', verifyUser, async (req, res) => {
 
     try {
         // Find the list
-        const list = await List.findById(listid);
+        const list = lists.find(l => l.id === listid);
 
         // Check if the list exists
         if (!list) {
@@ -24,11 +52,11 @@ router.delete('/deleteItem', verifyUser, async (req, res) => {
 
         // Remove the items
         items.forEach(item => {
-            list.items.id(item.itemid).remove();
+            const itemIndex = list.items.findIndex(i => i.id === item.itemid);
+            if (itemIndex !== -1) {
+                list.items.splice(itemIndex, 1);
+            }
         });
-
-        // Save the list
-        await list.save();
 
         // Send the response
         res.json({ listid });

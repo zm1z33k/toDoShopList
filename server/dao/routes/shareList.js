@@ -1,15 +1,16 @@
 const express = require('express');
-const List = require('../models/List'); // Assuming you have a List model
-
 const router = express.Router();
 
+// In-memory data structure to store lists
+const lists = [];
+
 // Share a list with another user
-router.put('/shareList', async (req, res) => {
+router.put('/shareList', (req, res) => {
     const { owner, listid, shareWith } = req.body;
 
     try {
         // Find the list by ID and owner
-        const list = await List.findOne({ _id: listid, owner: owner });
+        const list = lists.find(list => list.id === listid && list.owner === owner);
 
         // If the list is not found or the user is not the owner, return an error
         if (!list) {
@@ -19,7 +20,6 @@ router.put('/shareList', async (req, res) => {
         // Add the user to the members array if not already present
         if (!list.members.includes(shareWith)) {
             list.members.push(shareWith);
-            await list.save();
         }
 
         // Send the updated list members

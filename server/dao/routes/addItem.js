@@ -1,9 +1,41 @@
 const express = require('express');
 const { v4: uuidv4 } = require('uuid');
-const { getListById, addItemToList } = require('../services/listService');
-const { isAuthenticated, isAuthorized } = require('../middleware/auth');
 
 const router = express.Router();
+
+// Mock data for lists and users
+const lists = [
+    { id: '1', name: 'Groceries', items: [], owner: 'user1' },
+    { id: '2', name: 'Hardware', items: [], owner: 'user2' }
+];
+
+const users = [
+    { id: 'user1', name: 'Alice' },
+    { id: 'user2', name: 'Bob' }
+];
+
+// Mock function to get list by ID
+const getListById = (id) => {
+    return lists.find(list => list.id === id);
+};
+
+// Mock function to add items to list
+const addItemToList = (listid, newItems) => {
+    const list = getListById(listid);
+    if (list) {
+        list.items.push(...newItems);
+    }
+};
+
+// Mock authentication and authorization
+const isAuthenticated = (req, res, next) => {
+    req.user = users[0]; // Assume the first user is authenticated
+    next();
+};
+
+const isAuthorized = (user, list) => {
+    return user.id === list.owner;
+};
 
 // Add an item to the list
 router.put('/addItem', isAuthenticated, async (req, res) => {
@@ -11,7 +43,7 @@ router.put('/addItem', isAuthenticated, async (req, res) => {
 
     try {
         // Get the list by ID
-        const list = await getListById(listid);
+        const list = getListById(listid);
 
         // Check if the list exists
         if (!list) {
@@ -32,7 +64,7 @@ router.put('/addItem', isAuthenticated, async (req, res) => {
         }));
 
         // Add the new items to the list
-        await addItemToList(listid, newItems);
+        addItemToList(listid, newItems);
 
         // Send the response
         res.json({

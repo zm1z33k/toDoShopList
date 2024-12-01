@@ -1,6 +1,4 @@
 const express = require('express');
-const List = require('../models/List'); // Assuming you have a List model
-
 const router = express.Router();
 
 // Delete list
@@ -9,7 +7,7 @@ router.delete('/deleteList', async (req, res) => {
 
     try {
         // Find the list by id
-        const list = await List.findById(listid);
+        const list = await list.findById(listid);
 
         // If the list does not exist, return a 404 error
         if (!list) {
