@@ -14,14 +14,14 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 // Importing the routes
-const createListRouter = require(path.join(__dirname, 'dao/routes/createList'))
-const archiveListRouter = require(path.join(__dirname, 'dao/routes/archiveList'))
-const shareListRouter = require(path.join(__dirname, 'dao/routes/shareList'))
-const addItemRouter = require(path.join(__dirname, 'dao/routes/addItem'))
-const completeItemRouter = require(path.join(__dirname, 'dao/routes/completeItem'))
-const deleteItemRouter = require(path.join(__dirname, 'dao/routes/deleteItem'))
-const deleteListRouter = require(path.join(__dirname, 'dao/routes/deleteList'))
-const viewListRouter = require(path.join(__dirname, 'dao/routes/viewList'))
+const createListRouter = require(path.join(__dirname, 'routes/createList'))
+const archiveListRouter = require(path.join(__dirname, 'routes/archiveList'))
+const shareListRouter = require(path.join(__dirname, 'routes/shareList'))
+const addItemRouter = require(path.join(__dirname, 'routes/addItem'))
+const completeItemRouter = require(path.join(__dirname, 'routes/completeItem'))
+const deleteItemRouter = require(path.join(__dirname, 'routes/deleteItem'))
+const deleteListRouter = require(path.join(__dirname, 'routes/deleteList'))
+const viewListRouter = require(path.join(__dirname, 'routes/viewList'))
 
 // 1. Create list
 app.use("/createList",createListRouter)
