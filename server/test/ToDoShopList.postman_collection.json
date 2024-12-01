@@ -1,0 +1,237 @@
+{
+	"info": {
+		"_postman_id": "bc4c2482-666d-440a-b89c-27646cfd1607",
+		"name": "ToDoShopList",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33775278"
+	},
+	"item": [
+		{
+			"name": "addItem",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"listid\": \"123456\",\r\n  \"items\": [\r\n    { \"itemName\": \"tomato\", \"count\": 3}\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/addItem",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"addItem"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "archiveList",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userid\": \"456\",\r\n  \"listid\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/archiveList",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"archiveList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "completeItem",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"listid\": \"1\",\r\n  \"items\": [{\r\n    \"itemid\": \"a\",\r\n    \"completed\": true\r\n  }]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/completeItem",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"completeItem"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createList",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userid\": \"456\",\r\n  \"listName\": \"Dinner List\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/createList",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"createList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteItem",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"listid\": \"1\",\r\n  \"items\": [{\r\n    \"itemid\": \"1\"\r\n  }]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/deleteItem",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"deleteItem"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteList",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userid\": \"4\",\r\n  \"listid\": \"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/deleteList",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"deleteList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "shareList",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"owner\": \"user1\",\r\n  \"listid\": \"789\",\r\n  \"shareWith\": \"456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/shareList",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"shareList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "viewList",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userid\": \"1\",\r\n  \"listid\": \"4\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/viewList",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"viewList"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
