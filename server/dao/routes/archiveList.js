@@ -1,6 +1,28 @@
 const express = require('express');
 const router = express.Router();
 
+// Mock data for listid
+const mockLists = [
+    {
+        listid: '123456',
+        listName: "Dinner List",
+        dateCreated: "2024-11-2T12:00:00Z",
+        author: '456',
+        items: [],
+        members: [],
+        archived: false
+    },
+    {
+        listid: '654321',
+        listName: "Sunday dinner",
+        dateCreated: "2024-11-2T12:00:00Z",
+        author: '789',
+        items: [],
+        members: [],
+        archived: true
+    }
+];
+
 // Mock functions to replace the services
 async function getUserList(userid, listid) {
     // Implement your logic to get the user list
@@ -18,7 +40,7 @@ async function archiveList(listid) {
 }
 
 // Archive a list
-router.put('/archiveList', async function (req, res) {
+router.put('', async function (req, res) {
     const userid = req.body.userid;
     const listid = req.body.listid;
 

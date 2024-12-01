@@ -1,39 +1,18 @@
 const express = require('express');
 const router = express.Router();
 
-// Mock data for lists and users
+// Mock data for lists
 const lists = [
     {
         id: '1',
         owner: 'user1',
         members: ['user2'],
-        items: [{ id: 'item1', name: 'Milk' }, { id: 'item2', name: 'Bread' }]
+        items: [{ id: "1", name: "Milk" }, { id: "2", name: "Bread" }]
     }
 ];
-
-const users = [
-    { id: 'user1', name: 'Alice' },
-    { id: 'user2', name: 'Bob' }
-];
-
-// Mock function to verify user
-const verifyUser = (req, res, next) => {
-    const userId = req.headers['user-id'];
-    const user = users.find(u => u.id === userId);
-    if (!user) {
-        return res.status(401).json({ error: 'Unauthorized' });
-    }
-    req.user = user;
-    next();
-};
-
-// Mock function to check if user is owner or member
-const isOwnerOrMember = (user, list) => {
-    return list.owner === user.id || list.members.includes(user.id);
-};
 
 // Delete item
-router.delete('/deleteItem', verifyUser, async (req, res) => {
+router.delete('', async (req, res) => {
     const { listid, items } = req.body;
 
     try {
@@ -43,11 +22,6 @@ router.delete('/deleteItem', verifyUser, async (req, res) => {
         // Check if the list exists
         if (!list) {
             return res.status(404).json({ error: 'List not found' });
-        }
-
-        // Check if the user is the owner or a member of the list
-        if (!isOwnerOrMember(req.user, list)) {
-            return res.status(403).json({ error: 'Access denied' });
         }
 
         // Remove the items

@@ -1,6 +1,34 @@
 const express = require('express');
 const router = express.Router();
 
+// Mock data for users and lists
+const mockUsers = [
+    { userid: '1', listid: ['4'] },
+    { userid: '2', listid: ['5'] }
+];
+
+const mockLists = {
+    "4": [
+        { item: 'Milk', quantity: 2 },
+        { item: 'Bread', quantity: 1 }
+    ],
+    "5": [
+        { item: 'Eggs', quantity: 12 },
+        { item: 'Butter', quantity: 1 }
+    ]
+};
+
+// Updated mock function to verify list access using mock data
+const verifyListAccess = async (userid, listid) => {
+    const user = mockUsers.find(user => user.userid === userid);
+    return user && user.listid.includes(listid);
+};
+
+// Updated mock function to get list items using mock data
+const getListItems = async (userid, listid) => {
+    return mockLists[listid] || [];
+};
+
 // Mock function to verify user
 const verifyUser = (req, res, next) => {
     // Mock user verification logic
@@ -12,23 +40,8 @@ const verifyUser = (req, res, next) => {
     }
 };
 
-// Mock function to verify list access
-const verifyListAccess = async (userid, listid) => {
-    // Mock access verification logic
-    return userid && listid; // Simplified for demonstration
-};
-
-// Mock function to get list items
-const getListItems = async (userid, listid) => {
-    // Mock list items
-    return [
-        { item: 'Milk', quantity: 2 },
-        { item: 'Bread', quantity: 1 }
-    ];
-};
-
 // Route to view a list
-router.get('/viewList', verifyUser, async (req, res) => {
+router.get('', verifyUser, async (req, res) => {
     try {
         // Get the listid from the request body
         const { userid, listid } = req.body;

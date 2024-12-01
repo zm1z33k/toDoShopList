@@ -4,8 +4,24 @@ const router = express.Router();
 // In-memory data structure to store lists
 const lists = [];
 
+// Mock data for testing
+lists.push(
+    {
+        id: '789',
+        owner: 'user1',
+        members: [],
+        items: ['milk', 'bread']
+    },
+    {
+        id: '123',
+        owner: 'user2',
+        members: ['user1'],
+        items: ['eggs', 'cheese']
+    }
+);
+
 // Share a list with another user
-router.put('/shareList', (req, res) => {
+router.put('', (req, res) => {
     const { owner, listid, shareWith } = req.body;
 
     try {

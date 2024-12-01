@@ -4,7 +4,7 @@ const router = express.Router();
 // Mock data for demonstration purposes
 const mockLists = [
     {
-        id: '1',
+        listid: "1",
         owner: 'user1',
         items: [
             { itemid: 'a', completed: false },
@@ -25,12 +25,12 @@ const verifyOwnership = (user, list) => {
 };
 
 // Complete item
-router.put('/completeItem', verifyUser, async (req, res) => {
+router.put('', verifyUser, async (req, res) => {
     const { listid, items } = req.body;
 
     try {
         // Find the list
-        const list = mockLists.find(list => list.id === listid);
+        const list = mockLists.find(list => list.listid === listid);
 
         // Check if the list exists
         if (!list) {

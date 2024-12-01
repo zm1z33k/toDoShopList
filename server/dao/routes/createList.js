@@ -7,7 +7,7 @@ const router = express.Router();
 const lists = [];
 
 // Create a new list
-router.post('/createList', (req, res) => {
+router.post('', (req, res) => {
     const { userid, listName } = req.body;
 
     // Check if userid and listName are provided
