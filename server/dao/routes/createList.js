@@ -15,7 +15,7 @@ router.post('/createList', (req, res) => {
         return res.status(400).json({ error: 'userid and listName are required' });
     }
 
-    // Check if userid is a valid UUID
+    // Create a new list object
     const newList = {
         listid: uuidv4(),
         listName: listName,
