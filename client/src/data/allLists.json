@@ -1,0 +1,11 @@
+[
+    { "id": 1, "name": "Sunday dinner", "sharedtome": false, "archived": false, "owner": "true" },
+    { "id": 2, "name": "Peter's Lunch", "sharedtome": true, "archived": true, "owner": "false" },
+    { "id": 3, "name": "Summercamp", "sharedtome": false, "archived": true, "owner": "true" },
+    { "id": 4, "name": "IKEA furniture", "sharedtome": false, "archived": false, "owner": "true" },
+    { "id": 5, "name": "School project", "sharedtome": true, "archived": false, "owner": "false" },
+    { "id": 6, "name": "Holidays", "sharedtome": true, "archived": true, "owner": "false" },
+    { "id": 7, "name": "Personal", "sharedtome": false, "archived": true, "owner": "true" },
+    { "id": 8, "name": "Lidl food", "sharedtome": true, "archived": false, "owner": "false" }
+    // Add more items here if needed
+]

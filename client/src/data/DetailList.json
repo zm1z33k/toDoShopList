@@ -1,0 +1,16 @@
+{
+    "id": 3,
+    "name": "Camping Gear",
+    "owner": "user3",
+    "sharedWith": ["user1", "user2"],
+    "items": [
+      { "id": "item1", "name": "Tent", "amount": 1, "done": false },
+      { "id": "item2", "name": "Sleeping Bags", "amount": 2, "done": false },
+      { "id": "item3", "name": "Flashlight", "amount": 2, "done": true },
+      { "id": "item4", "name": "Camping Stove", "amount": 1, "done": false },
+      { "id": "item5", "name": "First Aid Kit", "amount": 2, "done": false },
+      { "id": "item6", "name": "Bug Spray", "amount": 2, "done": false }
+    ],
+    "archived": false
+}
+// Add more sample lists as needed
