@@ -4,13 +4,16 @@
   text-align: center;
 }
 
-.button {
+.add-button {
   background: none;
   border: 3px solid #ccc;
   cursor: pointer;
-  padding: 10px;
-  font-size: 16px;
-  margin-bottom: 20px;
+  padding: 4px;
+  font-size: 25px;
+  margin-bottom: 16px;
+  position: absolute;
+  top: 40px;
+  right: 80px;
 }
 
 .optionButton {
@@ -21,6 +24,14 @@
   margin-right: 10px;
   padding: 3px;
   font-size: 16px;
+}
+
+.titleList {
+  font-size: 27px;
+}
+
+h3 {
+  color: black;
 }
 
 .tile {

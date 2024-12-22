@@ -2,6 +2,28 @@
   text-align: center;
 }
 
+.light {
+  background-color: #ffffff;
+  color: black;
+}
+
+.dark {
+  background-color: #161616;
+  color: white;
+}
+
+.dark-mode {
+  background: none;
+  border: 3px solid #ccc;
+  cursor: pointer;
+  padding: 4px;
+  font-size: 25px;
+  margin-bottom: -5px;
+  position: absolute;
+  top: 40px;
+  right: 25px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

@@ -100,6 +100,9 @@ const ShoppingListDetail = () => {
           Leave from this shopping list
         </button>
       )}
+      <h4>_</h4>
+      <h4>_</h4>
+      <h4>_</h4>
     </div>
   );
 };

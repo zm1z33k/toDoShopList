@@ -1,14 +1,12 @@
-import React from 'react';
-import "./navbar.css"
-
+import "./navbar.css";
 
 const Navbar = () => {
   return (
-    <nav className="navbar">
-      <img src='/Images/logo192.png'></img>
-      <h1>Shoppping Lists</h1>
-      <img src='/Images/burger.png'></img>
-    </nav>
+        <nav className="navbar">
+          <img className="icon" src='/Images/logo192.png' alt="Logo" onClick={() => window.location.href = '/'}/>
+          <h1 onClick={() => window.location.href = '/'}>Shopping Lists</h1>
+          <h2>_____</h2>
+        </nav>
   );
 };
 

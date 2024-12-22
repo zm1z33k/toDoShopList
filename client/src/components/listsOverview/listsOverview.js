@@ -88,7 +88,7 @@ function ListsOverview() {
     // Zobrazení seznamů
     return (
         <div className="listName">
-            <h1>Stacy's Todo</h1>
+            <h1 className="titleList">Stacy's Todo</h1>
             <div style={{ marginBottom: "20px" }}>
             <label htmlFor="filter">Filter lists: </label>
             <select id="filter" value={filter} onChange={handleFilterChange}>
@@ -97,13 +97,12 @@ function ListsOverview() {
                 <option value="notArchived">Not Archived</option>
             </select>
             </div>
-            <button className="button"
-                onClick={() => addNewList()}
-                
+            <button className="add-button"
+                onClick={() => addNewList()}              
             >
                 ➕
             </button>
-            <div className="tile">
+            <div className="tile" onClick={() => window.location.href = '/detail'}>
                 {filteredLists.map((list) => (
                     <div className="tileStyle"
                         key={list.id}>
@@ -117,6 +116,11 @@ function ListsOverview() {
                                 onClick={() => shareList(list.id)}
                             >
                                 🔗
+                            </button>
+                            <button className="optionButton"
+                                onClick={() => archiveList(list.id)}
+                            >
+                                📦
                             </button>
                             <button className="optionButton"
                                 onClick={() => deleteList(list.id)}

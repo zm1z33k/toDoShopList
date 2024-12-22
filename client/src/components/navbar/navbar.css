@@ -4,12 +4,19 @@
     align-items: center;
     justify-content: space-between;
     padding: 20px;
+    margin-bottom: -40px;
 }
 
-.navbar > img {
+.icon {
     height: 50px;
+    cursor: pointer;
+}  
+
+h1 {
+    font-size: xx-large;
+    cursor: pointer;
 }
 
-.navbar > h1 {
-    font-size: xx-large;
+h2 {
+    color: transparent;
 }
