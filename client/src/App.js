@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import './App.css';
 import Navbar from './components/navbar/navbar';
 import ShoppingListOverview from './components/listsOverview/listsOverview';
@@ -26,12 +26,12 @@ function App() {
           <button className="dark-mode" onClick={toggleDarkMode}>
             {darkMode ? '🌞' : '🌜'}
           </button>
-          {/*Language toggle button nefunguje, ale snažil jsem se.*/}
           <button className="language-toggle" onClick={toggleLanguage}>
             {language === 'en' ? '🍺' : '💂'}
           </button>
           <Routes>
-            <Route path="/" element={<ShoppingListOverview language={language} />} />
+            <Route path="*" element={<Navigate to="/list" />} />
+            <Route path="/list" element={<ShoppingListOverview language={language} />} />
             <Route path="/detail" element={<ShoppingListDetail language={language} />} />
           </Routes>
         </Router>

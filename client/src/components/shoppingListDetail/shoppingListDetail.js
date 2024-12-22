@@ -1,39 +1,61 @@
 import React, { useState } from 'react';
 import "./shoppingListDetail.css"
 import { useShoppingLists } from '../../providers/shoppingListProvider';
-import Icon from '@mdi/react';
-import { mdiAccessPointCheck, mdiPencil, mdiDeleteCircle, mdiPlus } from '@mdi/js';
+import { Pie } from 'react-chartjs-2';
+import 'chart.js/auto';
 
+// This component is responsible for displaying the details of a shopping list.
 const ShoppingListDetail = () => {
   const { getShoppingListById, renameShoppingList, changeItemStatus, deleteInvitedUser, inviteUser, deleteItem, addItem } = useShoppingLists();
   const currentListId = 3;
-  const [currentUser, setCurrentUser] = useState("user1")
+  const [currentUser, setCurrentUser] = useState("user3")
   const shoppingList = getShoppingListById(currentListId, currentUser);
 
   const [showCompleted, setShowCompleted] = useState(true);
 
+  // If the shopping list doesn't exist or the user doesn't have access to it, display a message.
   if (!shoppingList) {
     return <p>You don't have access to this shopping list, or it doesn't exist.</p>;
   }
 
+  // This function is called when the user changes the value of the select element.
   const handleSelectChange = (event) => {
     setShowCompleted(event.target.value === 'show');
   };
 
+  // This function is called when the user changes the value of the select element.
   const handleSelectChangeUser = (event) => {
     setCurrentUser(event.target.value);
   };
+
+  // This object contains the data for the pie chart.
+  const completedItems = shoppingList.items.filter(item => item.status).length;
+  const pendingItems = shoppingList.items.length - completedItems;
+
+  // This object contains the data for the pie chart.
+  const data = {
+    labels: ['Completed', 'Open'],
+    datasets: [
+      {
+        data: [completedItems, pendingItems],
+        backgroundColor: ['#77dd77', '#36A2EB'],
+        hoverBackgroundColor: ['#77dd77', '#36A2EB']
+      }
+    ]
+  };
+
   return (
     <div className='wrapper'>
-      <h2>{shoppingList.name} <Icon path={mdiAccessPointCheck} size={1} /></h2>
+      <h2>{shoppingList.name}
       {shoppingList.owner === currentUser && (
         <div>
-          <strong>You are owner of this shopping list.</strong>
           <button onClick={() => renameShoppingList(currentListId, currentUser, prompt("Insert your name:"))}>
-            Rename <Icon path={mdiPencil} size={0.5} />
+            Rename ✏️
           </button>
         </div>
       )}
+      </h2>
+      
 
       <select onChange={handleSelectChangeUser} style={{marginRight: "10px"}}>
         <option value="user1">User1</option>
@@ -64,12 +86,12 @@ const ShoppingListDetail = () => {
                 <td className='tdName'>{item.name}</td>
                 <td className='tdStatus'>
                   <button onClick={() => changeItemStatus(currentListId, item.id)}>
-                    {item.status ? '✔️' : '❌'}
+                    {item.status ? '✅' : '🟦'}
                   </button>
                 </td>
-                <td className='tdAction'>
+                <td className='itemDeleteButton'>
                   <button onClick={() => deleteItem(currentListId, item.id)}>
-                    <Icon path={mdiDeleteCircle} size={0.5} /> Delete
+                    🗑️
                   </button>
                 </td>
               </tr>
@@ -77,15 +99,19 @@ const ShoppingListDetail = () => {
         </tbody>
       </table>
 
-      <button className='addItemButton' onClick={() => addItem(currentListId, prompt("Insert item name: "), parseInt(prompt("Insert count: ")))}>Insert item into list <Icon path={mdiPlus} size={0.5}></Icon></button>
+      <button className='addItemButton' onClick={() => addItem(currentListId, prompt("Insert item name: "), parseInt(prompt("Insert count: ")))}>➕</button>
+      
+      <div className="pie">
+        <Pie data={data} />
+      </div>
 
-      <div style={{ display: 'flex', justifyContent: "center", alignItems: "center", gap: '5px', borderTop: "1px solid black"}}>
-        <strong style={{marginTop: "5px"}}>Members: </strong>
+      <div style={{ display: 'flex', justifyContent: "center", alignItems: "center", gap: '10px', borderTop: "1px solid black"}}>
+        <strong>Members: </strong>
         {shoppingList.sharedWith && shoppingList.sharedWith.length > 0 ? (
           shoppingList.sharedWith.map((item, index) => (
             <span key={index}>
               {item}
-              <button onClick={() => deleteInvitedUser(currentListId, item)}><Icon path={mdiDeleteCircle} size={0.5} /></button>
+              <button onClick={() => deleteInvitedUser(currentListId, item)}>❌</button>
               {index < shoppingList.sharedWith.length - 1 ? '' : ''}
             </span>
           ))
@@ -100,11 +126,9 @@ const ShoppingListDetail = () => {
           Leave from this shopping list
         </button>
       )}
-      <h4>_</h4>
-      <h4>_</h4>
-      <h4>_</h4>
     </div>
   );
 };
 
+// Export the component.
 export default ShoppingListDetail;

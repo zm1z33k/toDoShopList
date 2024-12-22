@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./listsOverview.css";
+import { Pie } from 'react-chartjs-2';
+import 'chart.js/auto';
 
 // Seznamy, které se zobrazí na úvodní stránce
 const shoppingLists = [
@@ -10,7 +12,7 @@ const shoppingLists = [
     { id: 5, name: "School project", sharedtome: true, archived: false, owner: "false" },
     { id: 6, name: "Holidays", sharedtome: true, archived: true, owner: "false" },
     { id: 7, name: "Personal", sharedtome: false, archived: true, owner: "true" },
-    { id: 8, name: "Lidl food", sharedtome: true, archived: false, owner: "false" },
+    { id: 8, name: "Lidl food", sharedtome: true, archived: true, owner: "false" },
 ];
 
 // Komponenta pro zobrazení seznamů
@@ -85,6 +87,22 @@ function ListsOverview() {
         }
     };
 
+    // Počet archivovaných a nearchivovaných seznamů
+    const archivedCount = lists.filter(list => list.archived).length;
+    const notArchivedCount = lists.length - archivedCount;
+
+    // Data pro graf
+    const data = {
+        labels: ['Archived', 'Active'],
+        datasets: [
+            {
+                data: [archivedCount, notArchivedCount],
+                backgroundColor: ['#77dd77', '#36A2EB'],
+                hoverBackgroundColor: ['#77dd77', '#36A2EB']
+            }
+        ]
+    };
+
     // Zobrazení seznamů
     return (
         <div className="listName">
@@ -130,6 +148,10 @@ function ListsOverview() {
                         </div>
                     </div>
                 ))}
+            </div>
+            <div className="pie">
+                <h2>List Overview</h2>
+                <Pie data={data} />
             </div>
         </div>
     );

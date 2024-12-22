@@ -24,13 +24,14 @@ export const ShoppingListProvider = ({ children }) => {
     // Add more sample lists as needed
   ]);
 
+  // Get a shopping list by ID
   const getShoppingListById = (id, loggedUser) => {
     return shoppingLists.find(list => 
       list.id === id && (list.owner === loggedUser || list.sharedWith.includes(loggedUser))
     );
   };
   
-
+  // Change the status of an item in a shopping list
   const changeItemStatus = (listId, itemId) => {
     setShoppingLists(prevLists =>
       prevLists.map(list =>
@@ -46,6 +47,7 @@ export const ShoppingListProvider = ({ children }) => {
     );
   };
 
+  // Delete an invited user from a shopping list
   const deleteInvitedUser = (currentListId, item) => {
     setShoppingLists(prevLists =>
       prevLists.map(list =>
@@ -59,6 +61,7 @@ export const ShoppingListProvider = ({ children }) => {
     );
   };
 
+  // Invite a user to a shopping list
   const inviteUser = (currentListId, newUser) => {
     setShoppingLists(prevLists =>
       prevLists.map(list =>
@@ -72,6 +75,7 @@ export const ShoppingListProvider = ({ children }) => {
     );
   };
 
+  // Rename a shopping list
   const renameShoppingList = (id, userTriggered, newName) => {
     setShoppingLists(prevLists =>
       prevLists.map(list =>
@@ -82,6 +86,7 @@ export const ShoppingListProvider = ({ children }) => {
     );
   };
 
+  // Delete an item from a shopping list
   const deleteItem = (listId, itemId) => {
     setShoppingLists(prevLists =>
       prevLists.map(list =>
@@ -95,6 +100,7 @@ export const ShoppingListProvider = ({ children }) => {
     );
   };
 
+  // Add an item to a shopping list
   const addItem = (listId, itemName, itemAmount) => {
     setShoppingLists(prevLists =>
       prevLists.map(list =>
@@ -126,6 +132,7 @@ export const ShoppingListProvider = ({ children }) => {
   );
 };
 
+// Custom hook that shorthands the context
 export const useShoppingLists = () => {
     return useContext(ShoppingListContext);
 };
